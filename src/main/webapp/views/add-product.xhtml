@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<ui:include src="fragments/head.xhtml"/>
+<body>
+        <ui:include src="fragments/user-nav.xhtml"/>
+    <main>
+        <h1 class="text-center mt-2"><span class="badge badge-pill badge-dark">Add Product</span></h1>
+        <hr class="hr-3"/>
+        <h:form class="mx-auto w-25 bg-blur">
+            <div class="form-group">
+                <div class="text-white label-holder d-flex justify-content-center">
+                    <h:outputLabel for="name" class="h4 mb-2" value="Name"/>
+                </div>
+                <h:inputText class="form-control" id="name" value="#{productCreateBean.model.name}"/>
+            </div>
+            <div class="form-group">
+                <div class="text-white label-holder d-flex justify-content-center">
+                    <h:outputLabel for="description" class="h4 mb-2" value="Description"/>
+                </div>
+                <h:inputText type="text" class="form-control" id="description" value="#{productCreateBean.model.description}"/>
+            </div>
+            <div class="form-group">
+                <div class="text-white label-holder d-flex justify-content-center">
+                    <h:outputLabel for="category" class="h4 mb-2" value="Category"/>
+                </div>
+                <h:selectOneMenu styleClass="browser-default custom-select" id="category"
+                                 value="#{productCreateBean.model.category}">
+                    <f:selectItems value="#{enumBean.categories()}"/>
+                </h:selectOneMenu>
+            </div>
+            <div class="form-group">
+                <div class="text-white label-holder d-flex justify-content-center">
+                    <h:outputLabel for="sex" class="h4 mb-2" value="Sex"/>
+                </div>
+                <h:selectOneMenu styleClass="browser-default custom-select" id="sex"
+                                 value="#{productCreateBean.model.sex}">
+                    <f:selectItems value="#{enumBean.sexNames()}"/>
+                </h:selectOneMenu>
+            </div>
+            <div class="form-group">
+                <div class="text-white label-holder d-flex justify-content-center">
+                    <h:outputLabel for="price" class="h4 mb-2" value="Price"/>
+                </div>
+                <h:inputText type="number" class="form-control" id="price" value="#{productCreateBean.model.price}"/>
+            </div>
+            <div class="button-holder d-flex justify-content-center">
+                <h:commandLink type="submit" class="btn btn-secondary text-white mb-3"
+                value="Add Product" action="#{productCreateBean.createProduct}"/>
+            </div>
+        </h:form>
+    </main>
+    <ui:include src="fragments/footer.xhtml"/>
+</body>
+</html>

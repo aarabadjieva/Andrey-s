@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+<ui:include src="fragments/head.xhtml"/>
+<body>
+        <ui:include src="fragments/user-nav.xhtml"/>
+    <main>
+        <h1 class="text-center mt-2"><span class="badge badge-pill badge-dark">Products</span></h1>
+        <hr class="hr-3"/>
+        <div class="bg-blur container w-50">
+            <div class="row mb-4 d-flex flex-column text-center">
+                <ui:repeat value="#{homeBean.allProducts}" var="product">
+                    <h:form>
+                    <h:commandLink action="#{homeBean.seeProductDetails(product.name)}">
+                        <h:graphicImage library="img" name="#{product.sex}-#{product.category}.jpg" class="img-thumbnail" width="200"
+                                                            height="200"/>
+                    </h:commandLink>
+                    </h:form>
+                    <h5 class="text-center">#{product.name}</h5>
+                    <h2 class="text-center">#{product.price}</h2>
+                </ui:repeat>
+            </div>
+        </div>
+    </main>
+    <span style="visibility: hidden">...</span>
+    <ui:include src="fragments/footer.xhtml"/>
+</body>
+</html>

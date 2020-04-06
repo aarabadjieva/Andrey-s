@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+<ui:include src="fragments/head.xhtml"/>
+<body>
+    <ui:include src="fragments/guest-nav.xhtml"/>
+    <main>
+        <h1 class="text-center mt-2"><span class="badge badge-pill badge-dark">Register</span></h1>
+        <hr class="hr-3"/>
+        <h:form class="mx-auto w-25 bg-blur">
+            <div class="form-group">
+                <div class="label-holder textCol d-flex justify-content-center">
+                    <h:outputLabel for="username" class="h4 mb-2 text-white" value="Username"/>
+                </div>
+                <h:inputText type="text" class="form-control" id="username" value="#{registerBean.model.username}"/>
+            </div>
+            <div class="form-group">
+                <div class="label-holder text-white textCol d-flex justify-content-center">
+                    <h:outputLabel for="email" class="h4 mb-2" value="Email"/>
+                </div>
+                <h:inputText type="email" class="form-control" id="email" value="#{registerBean.model.email}"/>
+            </div>
+            <div class="form-group">
+                <div class="label-holder text-white textCol d-flex justify-content-center">
+                    <h:outputLabel for="password" class="h4 mb-2" value="Password"/>
+                </div>
+                <h:inputSecret class="form-control" id="password" value="#{registerBean.model.password}"/>
+            </div>
+            <div class="form-group">
+                <div class="label-holder text-white textCol d-flex justify-content-center">
+                    <h:outputLabel for="confirmPassword" class="h4 mb-2" value="Confirm Password"/>
+                </div>
+                <h:inputSecret class="form-control" id="confirmPassword" value="#{registerBean.model.confirmPassword}"/>
+            </div>
+            <div class="button-holder d-flex justify-content-center">
+                    <h:commandButton type="submit" class="btn btn-secondary text-white mb-3" value="Register" action="#{registerBean.registerUser()}"/>
+            </div>
+        </h:form>
+    </main>
+    <ui:include src="fragments/footer.xhtml"/>
+</body>
+</html>

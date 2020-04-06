@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+<ui:include src="fragments/head.xhtml"/>
+<h:body>
+       <ui:include src="fragments/user-nav.xhtml"/>
+    <main>
+        <h1 class="text-center mt-2"><span class="badge badge-pill badge-dark">Details</span></h1>
+        <hr class="my-3"/>
+        <div class="container-fluid bg-blur w-50">
+            <div class="row justify-content-center">
+                <h:form class="w-50 justify-content-center">
+                    <div class="label mt-2">
+                        <h2 class="text-white text-center">#{productDetailsBean.getProductByName(request.getParameter('name')).name}</h2>
+                    </div>
+                    <div class="label mt-4">
+                        <h:graphicImage library="img" name="#{productDetailsBean.getProductByName(request.getParameter('name')).sex}-#{productDetailsBean.getProductByName(request.getParameter('name')).category}.jpg" class="img-thumbnail" width="200" height="200"/>
+                        <h3 class="text-white text-center">#{productDetailsBean.getProductByName(request.getParameter('name')).description}</h3>
+                    </div>
+                    <div class="label mt-4">
+                        <h3 class="text-white text-center mb-3">#{productDetailsBean.getProductByName(request.getParameter('name')).price}</h3>
+                    </div>
+                    <input type="hidden" value="${productDetailsBean.getProductByName(request.getParameter('name')).name}" name="name"/>
+                    <div class="button-holder d-flex justify-content-center">
+                        <h:commandLink class="btn btn-danger text-white mb-3" value="Delete product" action="#{productDetailsBean.delete(request.getParameter('name'))}"/>
+                    </div>
+                </h:form>
+            </div>
+        </div>
+    </main>
+   <ui:include src="fragments/footer.xhtml"/>
+</h:body>
+</html>
